@@ -25,7 +25,7 @@ def load_cifar10(n_ex):
 
 def load_imagenet(n_ex, size=224):
     IMAGENET_SL = size
-    IMAGENET_PATH = "/scratch/maksym/imagenet/val_orig"
+    IMAGENET_PATH = "/kaggle/working/square-attack/data/imagenet/Sample_1000"
     imagenet = ImageFolder(IMAGENET_PATH,
                            transforms.Compose([
                                transforms.Resize(IMAGENET_SL),
