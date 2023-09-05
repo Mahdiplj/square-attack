@@ -10,6 +10,7 @@ import torch
 import torchvision.models as mdl
 import torchvision.transforms as transforms
 
+"""
 class PostAveragedResNet152(robustml.model.Model):
     def __init__(self, K, R, eps, device='cuda'):
         self._model = mdl.resnet152(pretrained=True).to(device)
@@ -136,3 +137,4 @@ class PostAveragedResNet110(robustml.model.Model):
         
 def pa_resnet110_config1():
     return PostAveragedResNet110(K=15, R=6, eps=8/255)
+"""
