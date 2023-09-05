@@ -92,7 +92,8 @@ class ModelPT(Model):
             model = model_class_dict[model_name](pretrained=True)
             self.mean = np.reshape([0.485, 0.456, 0.406], [1, 3, 1, 1])
             self.std = np.reshape([0.229, 0.224, 0.225], [1, 3, 1, 1])
-            model = DataParallel(model.cuda())
+            model = model.cuda()
+            model = DataParallel(model)
         else:
             model = model_class_dict[model_name]()
             if model_name in ['pt_post_avg_cifar10', 'pt_post_avg_imagenet']:
