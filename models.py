@@ -8,7 +8,7 @@ from torch.nn import DataParallel
 from madry_mnist.model import Model as madry_model_mnist
 from madry_cifar10.model import Model as madry_model_cifar10
 from logit_pairing.models import LeNet as lp_model_mnist, ResNet20_v2 as lp_model_cifar10
-from post_avg.postAveragedModels import pa_resnet110_config1 as post_avg_cifar10_resnet
+# from post_avg.postAveragedModels import pa_resnet110_config1 as post_avg_cifar10_resnet
 from post_avg.postAveragedModels import pa_resnet152_config1 as post_avg_imagenet_resnet
 
 
