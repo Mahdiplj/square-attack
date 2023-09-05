@@ -145,8 +145,8 @@ model_class_dict = {'pt_vgg': torch_models.vgg16_bn,
                     'lsq_mnist': lp_model_mnist,
                     'clp_cifar10': lp_model_cifar10,
                     'lsq_cifar10': lp_model_cifar10,
-                    'pt_post_avg_cifar10': post_avg_cifar10_resnet,
-                    'pt_post_avg_imagenet': post_avg_imagenet_resnet,
+                    # 'pt_post_avg_cifar10': post_avg_cifar10_resnet,
+                    # 'pt_post_avg_imagenet': post_avg_imagenet_resnet,
                     }
 all_model_names = list(model_class_dict.keys())
 
