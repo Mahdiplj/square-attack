@@ -10,6 +10,7 @@ from madry_cifar10.model import Model as madry_model_cifar10
 from logit_pairing.models import LeNet as lp_model_mnist, ResNet20_v2 as lp_model_cifar10
 # from post_avg.postAveragedModels import pa_resnet110_config1 as post_avg_cifar10_resnet
 # from post_avg.postAveragedModels import pa_resnet152_config1 as post_avg_imagenet_resnet
+from torchvision.models import resnet50, ResNet50_Weights
 
 
 class Model:
@@ -89,11 +90,13 @@ class ModelPT(Model):
     def __init__(self, model_name, batch_size, gpu_memory):
         super().__init__(batch_size, gpu_memory)
         if model_name in ['pt_vgg', 'pt_resnet', 'pt_inception', 'pt_densenet']:
-            model = model_class_dict[model_name](pretrained=True)
+            # model = model_class_dict[model_name](pretrained=True)
+            model = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+            
             self.mean = np.reshape([0.485, 0.456, 0.406], [1, 3, 1, 1])
             self.std = np.reshape([0.229, 0.224, 0.225], [1, 3, 1, 1])
             model = model.cuda()
-            model = DataParallel(model)
+            # model = DataParallel(model)
         else:
             model = model_class_dict[model_name]()
             if model_name in ['pt_post_avg_cifar10', 'pt_post_avg_imagenet']:
