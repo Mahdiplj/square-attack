@@ -12,6 +12,7 @@ from logit_pairing.models import LeNet as lp_model_mnist, ResNet20_v2 as lp_mode
 # from post_avg.postAveragedModels import pa_resnet152_config1 as post_avg_imagenet_resnet
 from torchvision.models import resnet50, ResNet50_Weights
 
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 class Model:
     def __init__(self, batch_size, gpu_memory):
@@ -125,7 +126,9 @@ class ModelPT(Model):
         with torch.no_grad():  # otherwise consumes too much memory and leads to a slowdown
             for i in range(n_batches):
                 x_batch = x[i*self.batch_size:(i+1)*self.batch_size]
-                x_batch_torch = torch.as_tensor(x_batch, device=torch.device('cuda'))
+##########################################################################################
+                x_batch_torch = torch.as_tensor(x_batch, device=device)
+##########################################################################################
                 logits = self.model(x_batch_torch).cpu().numpy()
                 logits_list.append(logits)
         logits = np.vstack(logits_list)
