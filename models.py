@@ -92,7 +92,7 @@ class ModelPT(Model):
         super().__init__(batch_size, gpu_memory)
         if model_name in ['pt_vgg', 'pt_resnet', 'pt_inception', 'pt_densenet']:
             # model = model_class_dict[model_name](pretrained=True)
-            model = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+            model = resnet50(pretrained=True)
             
             self.mean = np.reshape([0.485, 0.456, 0.406], [1, 3, 1, 1])
             self.std = np.reshape([0.229, 0.224, 0.225], [1, 3, 1, 1])
